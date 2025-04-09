@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
 
 @Component({
   selector: 'app-explore-container',
@@ -6,8 +7,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./explore-container.component.scss'],
   standalone: false,
 })
-export class ExploreContainerComponent {
+export class ExploreContainerComponent implements OnInit {
 
   @Input() name?: string;
+  @Input() placeholder?: string;
+  @Input() object: any[] = [];
 
+  ngOnInit(): void {
+    console.log(this.object);
+  }
+
+  handleChange(event: any) {
+    console.log(event.detail.value);
+  }
 }

@@ -1,4 +1,11 @@
 <div id="container">
-  <strong>{{ name }}</strong>
-  <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-list>
+    <ion-item>
+      <ion-select [label]="name" [placeholder]="placeholder" (ionChange)="handleChange($event)">
+        @for (item of object; track item) {
+          <ion-select-option [value]="item.id">{{ item.name }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </div>
