@@ -5,8 +5,10 @@ import { Product } from './tab-product.model';
 import { LoadingService } from '../services/loading.service';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { Filesystem, Directory } from '@capacitor/filesystem';
+
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+
 import { FileService } from '../services/file.service';
 const IMAGE_DIR = 'stored-images';
 
@@ -101,10 +103,21 @@ export class TabProductPage implements OnInit {
 
   async selectImage() {
 		const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
       resultType: CameraResultType.Uri,
-      source: CameraSource.Photos // Camera, Photos or Prompt!
+      source: CameraSource.Photos,
+      quality: 100,
+    });
+
+    if (image) {
+      this.saveImage(image)
+    }
+	}
+
+  async takeImage() {
+		const image = await Camera.getPhoto({
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera,
+      quality: 100,
     });
 
     if (image) {

@@ -1,11 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Productos
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item>
@@ -21,7 +13,7 @@
 
 	<ion-list>
 		<ion-item *ngFor="let file of images; let i = index">
-			<ion-thumbnail slot="start">
+			<ion-thumbnail slot="icon-only">
 				<ion-img [src]="file.data"></ion-img>
 			</ion-thumbnail>
 			<ion-label class="ion-text-wrap"> {{ file.name }} </ion-label>
@@ -35,10 +27,11 @@
 	</ion-list>
 </ion-content>
 
-<ion-footer>
-	<ion-toolbar color="primary">
-		<ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
-			<ion-icon slot="start" name="camera"></ion-icon>
-			Select Image </ion-button>
-	</ion-toolbar>
+<ion-footer class="icons">
+  <ion-button fill="solid" shape="round" size="large" color="primary" (click)="selectImage()">
+    <ion-icon slot="icon-only" name="images-outline"></ion-icon>
+  </ion-button>
+	<ion-button fill="solid" shape="round" size="large" color="primary" (click)="takeImage()">
+    <ion-icon slot="icon-only" name="camera"></ion-icon>
+  </ion-button>
 </ion-footer>
