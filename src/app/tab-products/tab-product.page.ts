@@ -94,7 +94,12 @@ export class TabProductPage implements OnInit {
 	}
 
   base64ToBlob(base64: string, contentType: string): Blob {
-    const byteCharacters = atob(base64.split(',')[1]);
+    const parts = base64.split(',');
+    if (parts.length !== 2 || !parts[1]) {
+      throw new Error('El string base64 no está correctamente codificado.');
+    }
+
+    const byteCharacters = atob(parts[1]);
     const byteArrays = [];
 
     for (let offset = 0; offset < byteCharacters.length; offset += 512) {
