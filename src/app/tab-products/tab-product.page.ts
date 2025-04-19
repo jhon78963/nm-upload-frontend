@@ -93,7 +93,7 @@ export class TabProductPage implements OnInit {
     }
 	}
 
-  base64ToBlob(base64: any, contentType: string): Blob {
+  base64ToBlob(base64: string, contentType: string): Blob {
     const byteCharacters = atob(base64.split(',')[1]);
     const byteArrays = [];
 
@@ -135,7 +135,7 @@ export class TabProductPage implements OnInit {
 
   async saveImage(photo: Photo) {
     const base64Data = await this.readAsBase64(photo);
-    const blob = this.base64ToBlob(base64Data, `image/${photo.format}`);
+    const blob = this.base64ToBlob(base64Data.toString(), `image/${photo.format}`);
     const fileName = new Date().getTime() + `.${photo.format}`;
     const formData = new FormData();
     formData.append('file', blob, fileName);
