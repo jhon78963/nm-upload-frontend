@@ -13,13 +13,10 @@
 
 	<ion-list>
 		<ion-item *ngFor="let file of images; let i = index">
-			<ion-thumbnail slot="icon-only">
-				<ion-img [src]="file.data"></ion-img>
-			</ion-thumbnail>
-			<ion-label class="ion-text-wrap"> {{ file.name }} </ion-label>
-			<ion-button slot="end" fill="clear" (click)="startUpload(file)">
-				<ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
-			</ion-button>
+      <img [src]="file.data" alt="image" width="250px">
+			<!-- <ion-thumbnail>
+				<ion-img [src]="file.path"></ion-img>
+			</ion-thumbnail> -->
 			<ion-button slot="end" fill="clear" (click)="deleteImage(file)">
 				<ion-icon slot="icon-only" name="trash"></ion-icon>
 			</ion-button>
@@ -28,10 +25,12 @@
 </ion-content>
 
 <ion-footer class="icons">
-  <ion-button fill="solid" shape="round" size="large" color="primary" (click)="selectImage()">
-    <ion-icon slot="icon-only" name="images-outline"></ion-icon>
-  </ion-button>
-	<ion-button fill="solid" shape="round" size="large" color="primary" (click)="takeImage()">
-    <ion-icon slot="icon-only" name="camera"></ion-icon>
-  </ion-button>
+  <ion-fab class="icons">
+    <ion-fab-button (click)="selectImage()">
+      <ion-icon name="images-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="takeImage()">
+      <ion-icon name="Camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-footer>

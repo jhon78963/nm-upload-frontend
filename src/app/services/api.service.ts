@@ -40,4 +40,9 @@ export class ApiService {
     const httpHeaders = TOKEN ? { ...headers, Authorization: `Bearer ${TOKEN}` } : headers;
     return this.http.delete<T>(`${this.BASE_URL}/${path}`, { headers: httpHeaders });
   }
+
+  deleteFile<T>(path: string, headers?: any) {
+    const httpHeaders = TOKEN ? { ...headers, Authorization: `Bearer ${FILE_TOKEN}` } : headers;
+    return this.http.delete<T>(`${this.BASE_FILE_URL}/${path}`, { headers: httpHeaders });
+  }
 }

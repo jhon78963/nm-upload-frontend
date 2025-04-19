@@ -5,3 +5,4 @@ export const BASE_FILE_URL = environment.BASE_FILE_URL;
 export const COMPANY_ID = environment.COMPANY_ID;
 export const TOKEN = environment.accessToken;
 export const FILE_TOKEN = environment.accessFileToken;
+export const BASE_S3_URL = environment.BASE_S3_URL;
