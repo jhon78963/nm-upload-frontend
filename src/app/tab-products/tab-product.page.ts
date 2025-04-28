@@ -139,8 +139,6 @@ export class TabProductPage implements OnInit {
   }
 
   async saveImage(photo: Photo) {
-    // const base64Data = await this.readAsBase64(photo);
-    // const blob = this.base64ToBlob(base64Data.toString(), `image/${photo.format}`);
     const response = await fetch(photo.webPath!);
     const blob = await response.blob();
     const fileName = new Date().getTime() + `.${photo.format}`;
