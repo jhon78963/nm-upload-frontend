@@ -35,5 +35,5 @@ export class FileService {
 
   removeImage(imageId: number) {
     return this.apiService.delete(`images/${imageId}`);
-  };
+  }
 }
